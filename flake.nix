@@ -11,6 +11,10 @@
         path = ./templates/simplebin;
         description = "Template for a shell execute";
       };
+      defaultApp = {
+        path = ./templates/default-app;
+        description = "Template for a app pacakge";
+      };
     };
   };
 }
