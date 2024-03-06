@@ -1,27 +1,16 @@
 {
-  description = "A very basic flake";
+  description = "A collection of flake templates as starting points for your awesome projects";
 
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=23.11";
-    flake-utils.url = "github:numtide/flake-utils";
-    flake-compat = {
-      url = "github:edolstra/flake-compat";
-      flake = false;
+  outputs = { self, nixpkgs, ... }@inputs: {
+    templates = {
+      simplebin = {
+        path = ./templates/simplebin;
+        description = "Template for a shell execute";
+      };
+      shellscript = {
+        path = ./templates/simplebin;
+        description = "Template for a shell execute";
+      };
     };
   };
-
-  outputs = { self, nixpkgs, flake-utils, flake-compat }: 
-  flake-utils.lib.eachDefaultSystem( system:  
-
-  let app = nixpkgs.legacyPackages.${system}.writeShellApplication {
-      name = "hello";
-      text = ''
-        cat "${"$"}{@}"
-      '';
-    };
-
-  in
-  {
-    packages.default = app;
-  });
 }
